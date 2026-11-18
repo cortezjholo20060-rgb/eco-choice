@@ -13,7 +13,8 @@ export async function createSupabaseServer() {
       getAll() {
         return store.getAll();
       },
-      setAll(list) {
+      setAll(list: { name: string; value: string; options?: Parameters<typeof store.set>[2] }[]) {
+
         try {
           list.forEach(({ name, value, options }) => store.set(name, value, options));
         } catch {
